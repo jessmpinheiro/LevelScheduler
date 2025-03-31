@@ -12,7 +12,7 @@ export default function Header() {
           
           <div className="flex items-center space-x-2 text-sm">
             <Mail className="h-5 w-5 text-primary" />
-            <a href="mailto:english.assessment@example.com" className="hover:text-primary">english.assessment@example.com</a>
+            <a href="mailto:jessmpinheiro@gmail.com" className="hover:text-primary">jessmpinheiro@gmail.com</a>
             <span className="hidden md:inline">|</span>
             <span className="hidden md:flex items-center space-x-2">
               <Phone className="h-5 w-5 text-primary" />
