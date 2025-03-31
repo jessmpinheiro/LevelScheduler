@@ -31,27 +31,27 @@ const testimonials: Testimonial[] = [
 // Testimonial card component
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
-    <Card className="border border-gray-200">
-      <CardContent className="p-4">
+    <Card className="border border-gray-200 transition-all hover:shadow-md">
+      <CardContent className="p-6">
         <div className="flex items-center mb-3">
-          <div className="text-[#FBBC05] flex">
+          <div className="text-[#ff6a00] flex">
             {Array(5).fill(0).map((_, i) => (
               <Star 
                 key={i} 
-                className="h-4 w-4" 
-                fill={i < testimonial.rating ? "#FBBC05" : "none"} 
+                className="h-5 w-5" 
+                fill={i < testimonial.rating ? "#ff6a00" : "none"} 
               />
             ))}
           </div>
         </div>
-        <p className="text-gray-600 mb-3">{testimonial.text}</p>
+        <p className="text-gray-700 mb-4 leading-relaxed">{testimonial.text}</p>
         <div className="flex items-center">
-          <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center mr-2">
-            <User className="h-4 w-4" />
+          <div className="w-10 h-10 bg-gradient-primary rounded-full flex items-center justify-center mr-3 text-white">
+            <User className="h-5 w-5" />
           </div>
           <div>
-            <p className="font-medium text-sm">{testimonial.name}</p>
-            <p className="text-xs text-gray-500">{testimonial.progress}</p>
+            <p className="font-bold text-sm">{testimonial.name}</p>
+            <p className="text-xs text-primary">{testimonial.progress}</p>
           </div>
         </div>
       </CardContent>
@@ -61,18 +61,17 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
 
 export default function TestimonialSection() {
   return (
-    <section className="max-w-4xl mx-auto mt-10">
-      <Card className="shadow-sm">
-        <CardContent className="p-6">
-          <h2 className="text-2xl font-medium mb-6">What Our Students Say</h2>
-          
-          <div className="grid md:grid-cols-2 gap-6">
-            {testimonials.map(testimonial => (
-              <TestimonialCard key={testimonial.id} testimonial={testimonial} />
-            ))}
-          </div>
-        </CardContent>
-      </Card>
+    <section className="max-w-4xl mx-auto mt-16 px-4">
+      <div className="text-center mb-10">
+        <h2 className="text-3xl font-bold mb-3 text-gradient inline-block">What Our Students Say</h2>
+        <p className="text-gray-600 max-w-2xl mx-auto">Hear from students who have improved their English skills through our assessment and consultation services.</p>
+      </div>
+      
+      <div className="grid md:grid-cols-2 gap-6">
+        {testimonials.map(testimonial => (
+          <TestimonialCard key={testimonial.id} testimonial={testimonial} />
+        ))}
+      </div>
     </section>
   );
 }

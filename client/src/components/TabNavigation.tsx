@@ -11,10 +11,10 @@ interface TabNavigationProps {
 export default function TabNavigation({ activeTab, setActiveTab }: TabNavigationProps) {
   return (
     <>
-      <div className="max-w-4xl mx-auto mb-6">
+      <div className="max-w-4xl mx-auto mb-8 px-4">
         <div className="border-b border-gray-200">
           <ul className="flex">
-            <li className="mr-1">
+            <li className="mr-4">
               <a 
                 href="#level-check" 
                 onClick={(e) => {
@@ -22,9 +22,9 @@ export default function TabNavigation({ activeTab, setActiveTab }: TabNavigation
                   setActiveTab("level-check");
                 }}
                 className={cn(
-                  "inline-block py-3 px-4 font-medium",
+                  "inline-block py-3 px-4 font-medium text-lg rounded-t-lg transition-all",
                   activeTab === "level-check" 
-                    ? "text-primary border-b-2 border-primary" 
+                    ? "text-gradient font-bold border-b-2 border-primary" 
                     : "text-gray-600 hover:text-primary"
                 )}
               >
@@ -39,9 +39,9 @@ export default function TabNavigation({ activeTab, setActiveTab }: TabNavigation
                   setActiveTab("schedule");
                 }}
                 className={cn(
-                  "inline-block py-3 px-4 font-medium",
+                  "inline-block py-3 px-4 font-medium text-lg rounded-t-lg transition-all",
                   activeTab === "schedule" 
-                    ? "text-primary border-b-2 border-primary" 
+                    ? "text-gradient font-bold border-b-2 border-primary" 
                     : "text-gray-600 hover:text-primary"
                 )}
               >
@@ -52,7 +52,7 @@ export default function TabNavigation({ activeTab, setActiveTab }: TabNavigation
         </div>
       </div>
       
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto px-4">
         {activeTab === "level-check" ? <LevelCheckTab /> : <ScheduleTab />}
       </div>
       
