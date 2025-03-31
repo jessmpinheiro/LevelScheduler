@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock } from "lucide-react";
+import { SparkleIcon } from "./icons/SparkleIcon";
 
 export default function ScheduleTab() {
   // Calendar URL for scheduling meetings
@@ -11,9 +12,12 @@ export default function ScheduleTab() {
       <Card className="shadow-md border-0">
         <CardContent className="p-8">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
-            <div>
-              <h2 className="text-3xl font-bold mb-2 text-gradient inline-block">Schedule a Consultation</h2>
-              <p className="text-gray-600">Book a one-on-one session to discuss your English learning journey</p>
+            <div className="flex items-start">
+              <Calendar className="w-10 h-10 mr-3 text-primary flex-shrink-0 mt-1" />
+              <div>
+                <h2 className="text-3xl font-bold mb-2 text-gradient inline-block">Schedule a Consultation</h2>
+                <p className="text-gray-600">Book a one-on-one session to discuss your English learning journey</p>
+              </div>
             </div>
             <Badge className="bg-gradient-primary hover:opacity-90 transition-opacity text-white rounded-full px-4 py-1 text-sm font-medium self-start md:self-auto flex items-center">
               <Clock className="h-4 w-4 mr-1" />
@@ -39,10 +43,10 @@ export default function ScheduleTab() {
           </div>
           
           <div className="mt-8 bg-gray-50 p-6 rounded-lg border border-gray-100">
-            <h3 className="font-bold text-lg mb-4 flex items-center text-gray-800">
-              <Calendar className="h-5 w-5 mr-2 text-primary" />
-              What to expect in your consultation:
-            </h3>
+            <div className="flex items-center mb-4">
+              <SparkleIcon className="w-6 h-6 text-primary mr-2" />
+              <h3 className="font-bold text-lg text-gray-800">What to expect in your consultation:</h3>
+            </div>
             <ul className="grid md:grid-cols-2 gap-3">
               <li className="flex items-center bg-white p-3 rounded-md border border-gray-100 shadow-sm">
                 <div className="h-2 w-2 rounded-full bg-gradient-primary mr-2"></div>

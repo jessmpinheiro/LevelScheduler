@@ -34,12 +34,12 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
     <Card className="border border-gray-200 transition-all hover:shadow-md">
       <CardContent className="p-6">
         <div className="flex items-center mb-3">
-          <div className="text-[#ff6a00] flex">
+          <div className="text-[#8e2de2] flex">
             {Array(5).fill(0).map((_, i) => (
               <Star 
                 key={i} 
                 className="h-5 w-5" 
-                fill={i < testimonial.rating ? "#ff6a00" : "none"} 
+                fill={i < testimonial.rating ? "#8e2de2" : "none"} 
               />
             ))}
           </div>
