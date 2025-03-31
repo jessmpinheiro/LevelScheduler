@@ -3,8 +3,8 @@ import { Badge } from "@/components/ui/badge";
 import { Info, Lock } from "lucide-react";
 
 export default function LevelCheckTab() {
-  // Google Form URL should be replaced with the actual form URL
-  const googleFormUrl = "https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true";
+  // Google Form URL for the English level assessment
+  const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSd2zhoScVWEc5jmffzHHLXbmblYqC-HXbaaL94SqqDZ_Q40Gw/viewform?embedded=true";
   
   return (
     <div>

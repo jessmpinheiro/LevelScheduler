@@ -2,8 +2,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 export default function ScheduleTab() {
-  // Calendar URL should be replaced with the actual calendar URL (Google Calendar or Calendly)
-  const calendarUrl = "https://calendar.google.com/calendar/appointments/schedules/YOUR_CALENDAR_ID";
+  // Calendar URL for scheduling meetings
+  const calendarUrl = "https://calendar.app.google/31BGK1V8QW8MYp4W8";
   
   return (
     <div>
