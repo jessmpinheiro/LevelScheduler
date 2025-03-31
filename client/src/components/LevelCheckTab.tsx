@@ -52,6 +52,10 @@ export default function LevelCheckTab() {
               <Info className="h-5 w-5 mr-2 text-primary" /> 
               The assessment provides an approximate level. Results will be sent to your email.
             </p>
+            <p className="text-sm text-gray-700 mb-3 flex items-center">
+              <Info className="h-5 w-5 mr-2 text-primary" /> 
+              For a complete and accurate level assessment, the online free no-commitment consultation is required.
+            </p>
             <p className="text-sm text-gray-700 flex items-center">
               <Lock className="h-5 w-5 mr-2 text-primary" /> 
               Your data is secure and will only be used for assessment purposes.

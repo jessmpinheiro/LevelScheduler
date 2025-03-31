@@ -24,7 +24,7 @@ export default function IntroSection() {
               </div>
               <div>
                 <h3 className="font-medium mb-2">Complete the Assessment</h3>
-                <p className="text-gray-600 text-sm">Take our comprehensive English level check form to help us understand your current language skills.</p>
+                <p className="text-gray-600 text-sm">Take our comprehensive English level check form to get an approximate evaluation of your skills.</p>
               </div>
             </div>
             
@@ -33,8 +33,8 @@ export default function IntroSection() {
                 <span>2</span>
               </div>
               <div>
-                <h3 className="font-medium mb-2">Schedule a Consultation</h3>
-                <p className="text-gray-600 text-sm">Choose a convenient time to discuss your results and get personalized learning recommendations.</p>
+                <h3 className="font-medium mb-2">Schedule a Free Consultation</h3>
+                <p className="text-gray-600 text-sm">Book a free, no-commitment call to get a complete level assessment and personalized recommendations.</p>
               </div>
             </div>
           </div>

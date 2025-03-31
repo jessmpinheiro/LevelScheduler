@@ -25,7 +25,7 @@ export default function ScheduleTab() {
             </Badge>
           </div>
           
-          <p className="mb-8 text-lg leading-relaxed">Select a convenient time for your consultation. During this call, we'll discuss your assessment results and provide personalized recommendations for your English learning journey.</p>
+          <p className="mb-8 text-lg leading-relaxed">Select a convenient time for your <span className="font-semibold">free, no-commitment consultation</span>. During this call, we'll provide a complete and accurate assessment of your English level and personalized recommendations for your learning journey.</p>
           
           <div className="border border-gray-200 rounded-lg overflow-hidden shadow-sm">
             <iframe 
@@ -50,7 +50,7 @@ export default function ScheduleTab() {
             <ul className="grid md:grid-cols-2 gap-3">
               <li className="flex items-center bg-white p-3 rounded-md border border-gray-100 shadow-sm">
                 <div className="h-2 w-2 rounded-full bg-gradient-primary mr-2"></div>
-                <span>Review of your assessment results</span>
+                <span>Complete and accurate level assessment</span>
               </li>
               <li className="flex items-center bg-white p-3 rounded-md border border-gray-100 shadow-sm">
                 <div className="h-2 w-2 rounded-full bg-gradient-primary mr-2"></div>
