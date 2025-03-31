@@ -15,7 +15,7 @@ export default function IntroSection() {
             <h2 className="text-2xl font-medium">Let's assess your english level!</h2>
             <SparkleIcon className="w-6 h-6 ml-2 text-primary" />
           </div>
-          <p className="mb-4">Our assessment process helps determine your current English proficiency level and allows you to schedule a personalized consultation with a language expert.</p>
+          <p className="mb-4">Our assessment process provides an approximate evaluation of your English proficiency level and allows you to schedule a personalized consultation with a language expert.</p>
           
           <div className="grid md:grid-cols-2 gap-6 mt-6">
             <div className="flex items-start">
