@@ -8,7 +8,10 @@ export default function Footer() {
           <JessLogo className="w-20 h-10" />
         </div>
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm text-white/80 mb-4 md:mb-0">&copy; {new Date().getFullYear()} Jessica's English Assessment Service. All rights reserved.</p>
+          <p className="text-sm text-white/80 mb-4 md:mb-0">
+            &copy; {new Date().getFullYear()} Jessica's English Assessment Service. All rights reserved. 
+            <span className="ml-2">+55 (88) 9 9369-1238</span>
+          </p>
           <div className="flex items-center space-x-6">
             <a href="#" className="text-white/80 hover:text-white transition-colors text-sm">Privacy Policy</a>
             <a href="#" className="text-white/80 hover:text-white transition-colors text-sm">Terms of Service</a>

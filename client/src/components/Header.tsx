@@ -23,7 +23,7 @@ export default function Header() {
             <span className="hidden md:inline text-white/80">|</span>
             <span className="hidden md:flex items-center space-x-2">
               <Phone className="h-5 w-5 text-white" />
-              <a href="tel:+11234567890" className="text-white hover:text-white/80">+1 (123) 456-7890</a>
+              <a href="tel:+5588993691238" className="text-white hover:text-white/80">+55 (88) 9 9369-1238</a>
             </span>
           </div>
         </div>
