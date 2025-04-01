@@ -1,11 +1,16 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock } from "lucide-react";
+import { Calendar, Clock, Mail } from "lucide-react";
 import { SparkleIcon } from "./icons/SparkleIcon";
+import { useState } from "react";
+import CalendlySetupGuide from "./CalendlySetupGuide";
 
 export default function ScheduleTab() {
   // Calendar URL for scheduling meetings
   const calendarUrl = "https://calendly.com/teacherjessbr/new-meeting";
+  
+  // State to toggle setup guide visibility
+  const [showSetupGuide, setShowSetupGuide] = useState(false);
   
   return (
     <div>
@@ -25,7 +30,22 @@ export default function ScheduleTab() {
             </Badge>
           </div>
           
-          <p className="mb-8 text-lg leading-relaxed">Select a convenient time for your <span className="font-semibold">free, no-commitment consultation</span>. During this call, we'll provide a complete and accurate assessment of your English level and personalized recommendations for your learning journey.</p>
+          <div className="mb-8">
+            <p className="text-lg leading-relaxed mb-2">Select a convenient time for your <span className="font-semibold">free, no-commitment consultation</span>. During this call, we'll provide a complete and accurate assessment of your English level and personalized recommendations for your learning journey.</p>
+            
+            <div className="flex items-center text-primary mt-4">
+              <Mail className="h-4 w-4 mr-2" />
+              <p>
+                <span className="font-medium">Email Notifications: </span>
+                <button 
+                  onClick={() => setShowSetupGuide(!showSetupGuide)}
+                  className="underline text-primary hover:text-purple-700 focus:outline-none"
+                >
+                  {showSetupGuide ? 'Hide setup instructions' : 'Show setup instructions'}
+                </button>
+              </p>
+            </div>
+          </div>
           
           <div className="border border-gray-200 rounded-lg overflow-hidden shadow-sm">
             <iframe 
@@ -68,6 +88,9 @@ export default function ScheduleTab() {
           </div>
         </CardContent>
       </Card>
+      
+      {/* Collapsible setup guide */}
+      {showSetupGuide && <CalendlySetupGuide />}
     </div>
   );
 }
