@@ -23,7 +23,7 @@ const testimonials: Testimonial[] = [
     id: 2,
     rating: 5,
     text: "The scheduling system was easy to use and the consultation provided clear guidance on my English learning path.",
-    name: "Miguel Rodriguez",
+    name: "Ravel Alves",
     progress: "Beginner to Intermediate"
   }
 ];
