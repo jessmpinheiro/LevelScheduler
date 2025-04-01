@@ -16,7 +16,7 @@ const testimonials: Testimonial[] = [
     id: 1,
     rating: 5,
     text: "The assessment was very accurate and the consultation helped me identify the areas I need to focus on. Highly recommended!",
-    name: "Sarah Johnson",
+    name: "Amanda Carvalho",
     progress: "Intermediate to Advanced"
   },
   {
