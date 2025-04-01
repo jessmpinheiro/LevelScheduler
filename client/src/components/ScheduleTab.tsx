@@ -5,7 +5,7 @@ import { SparkleIcon } from "./icons/SparkleIcon";
 
 export default function ScheduleTab() {
   // Calendar URL for scheduling meetings
-  const calendarUrl = "https://calendar.app.google/31BGK1V8QW8MYp4W8";
+  const calendarUrl = "https://calendly.com/teacherjessbr/new-meeting";
   
   return (
     <div>
