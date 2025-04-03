@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Info, Lock, Clock } from "lucide-react";
 import { GraduationCapIcon } from "./icons/GraduationCapIcon";
 import { SparkleIcon } from "./icons/SparkleIcon";
+import StyledGoogleForm from "./StyledGoogleForm";
 
 export default function LevelCheckTab() {
   // Google Form URL for the English level assessment
@@ -29,18 +30,11 @@ export default function LevelCheckTab() {
           <p className="mb-8 text-lg leading-relaxed">Please complete the following form to help us assess your approximate English level. The assessment covers reading, writing, vocabulary, and grammar skills to provide a general evaluation.</p>
           
           <div className="border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-            <iframe 
-              src={googleFormUrl}
-              width="100%" 
-              height="700" 
-              frameBorder="0" 
-              marginHeight={0} 
-              marginWidth={0}
-              title="English Level Assessment Form"
+            <StyledGoogleForm 
+              formUrl={googleFormUrl}
+              height={700}
               className="bg-white"
-            >
-              Loading Google Form...
-            </iframe>
+            />
           </div>
           
           <div className="mt-8 bg-gray-50 p-4 rounded-lg border border-gray-100">
