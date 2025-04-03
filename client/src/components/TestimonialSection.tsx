@@ -61,7 +61,7 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
 
 export default function TestimonialSection() {
   return (
-    <section className="max-w-4xl mx-auto mt-16 px-4">
+    <section className="max-w-4xl mx-auto mt-16 px-4 testimonials-section">
       <div className="text-center mb-10">
         <h2 className="text-3xl font-bold mb-3 text-gradient inline-block">What Our Students Say</h2>
         <p className="text-gray-600 max-w-2xl mx-auto">Hear from students who have improved their English skills through our assessment and consultation services.</p>

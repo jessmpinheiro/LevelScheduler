@@ -6,6 +6,7 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import { initializeAnalytics, trackPageView } from "./lib/analytics";
 import { useEffect } from "react";
+import OnboardingTutorial from "./components/OnboardingTutorial";
 
 // GitHub Pages uses the repo name in the URL path
 // This helper function extracts the base path from the current URL
@@ -54,6 +55,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Router />
+      <OnboardingTutorial />
       <Toaster />
     </QueryClientProvider>
   );

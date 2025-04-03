@@ -61,5 +61,10 @@ export const analytics = {
   // Acompanhar quando alguém completa um agendamento
   trackScheduleComplete: () => {
     trackEvent("Conversão", "Completar Agendamento");
+  },
+  
+  // Método geral para rastrear qualquer evento
+  trackEvent: (category: string, action: string, label?: string, value?: number) => {
+    trackEvent(category, action, label, value);
   }
 };
