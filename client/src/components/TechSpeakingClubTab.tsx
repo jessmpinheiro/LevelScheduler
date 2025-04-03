@@ -45,9 +45,21 @@ export default function TechSpeakingClubTab() {
     setIsSubmitting(true);
     
     try {
-      // In a real app, this would send the data to a server
-      // For now, we'll simulate a successful submission
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Send the waitlist data to our API endpoint
+      const response = await fetch('/api/waitlist-signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...data,
+          program: 'Tech Speaking Club'
+        }),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to submit waitlist form');
+      }
       
       console.log("Form submitted:", data);
       
@@ -62,9 +74,10 @@ export default function TechSpeakingClubTab() {
       form.reset();
       setIsSubmitted(true);
     } catch (error) {
+      console.error('Error submitting form:', error);
       toast({
         title: "Something went wrong",
-        description: "Please try again later.",
+        description: "Please try again later. If the problem persists, contact us directly.",
         variant: "destructive",
       });
     } finally {

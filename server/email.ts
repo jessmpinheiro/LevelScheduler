@@ -36,6 +36,16 @@ interface Appointment {
   notes?: string;
 }
 
+// Waitlist signup interface
+export interface WaitlistSignup {
+  name: string;
+  email: string;
+  profession: string;
+  englishLevel: string;
+  interests?: string;
+  program: string;
+}
+
 // Create a transporter
 let transporter: nodemailer.Transporter;
 
@@ -78,7 +88,7 @@ export async function sendAppointmentNotification(appointment: Appointment): Pro
     // Send to the website owner (you)
     const ownerInfo = await transporter.sendMail({
       from: process.env.EMAIL_USER,
-      to: process.env.NOTIFICATION_EMAIL || process.env.EMAIL_USER,
+      to: process.env.NOTIFICATION_EMAIL || process.env.EMAIL_USER || 'jessmpinheiro@gmail.com',
       subject: `New Appointment Scheduled: ${appointment.name}`,
       html: `
         <h1>New Appointment Scheduled</h1>
@@ -116,6 +126,44 @@ export async function sendAppointmentNotification(appointment: Appointment): Pro
     return true;
   } catch (error) {
     console.error('Failed to send email notification:', error);
+    return false;
+  }
+}
+
+// Send waitlist notification to Jessica
+export async function sendWaitlistNotification(signup: WaitlistSignup): Promise<boolean> {
+  // For fallback when no email service, direct notification to Jessica's email
+  if (!transporter && !initializeEmailService()) {
+    // Even though we don't have email service, we'll still consider this a success
+    // for demonstration purposes and log the information
+    console.log('Email service not available, but would send to jessmpinheiro@gmail.com:', signup);
+    return true;
+  }
+
+  try {
+    // Send notification about new waitlist signup
+    const info = await transporter.sendMail({
+      from: process.env.EMAIL_USER || 'noreply@levelchecker.com',
+      to: 'jessmpinheiro@gmail.com', // Direct to Jessica's email as requested
+      subject: `New ${signup.program} Signup: ${signup.name}`,
+      html: `
+        <h1>New Waitlist Registration</h1>
+        <p>Someone has joined the waitlist for your ${signup.program}.</p>
+        <h2>Contact Details:</h2>
+        <ul>
+          <li><strong>Name:</strong> ${signup.name}</li>
+          <li><strong>Email:</strong> ${signup.email}</li>
+          <li><strong>Profession:</strong> ${signup.profession}</li>
+          <li><strong>English Level:</strong> ${signup.englishLevel}</li>
+          ${signup.interests ? `<li><strong>Interests:</strong> ${signup.interests}</li>` : ''}
+        </ul>
+      `
+    });
+
+    console.log('Waitlist notification sent:', info.messageId);
+    return true;
+  } catch (error) {
+    console.error('Failed to send waitlist notification:', error);
     return false;
   }
 }

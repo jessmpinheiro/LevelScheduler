@@ -1,7 +1,12 @@
 import type { Express, Request, Response } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { initializeEmailService, sendAppointmentNotification } from "./email";
+import { 
+  initializeEmailService, 
+  sendAppointmentNotification, 
+  sendWaitlistNotification, 
+  type WaitlistSignup 
+} from "./email";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Initialize email service if environment variables are set
@@ -68,6 +73,45 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.status(200).json({ 
         status: "error", 
         message: "Error processing webhook, but acknowledged" 
+      });
+    }
+  });
+
+  // Handle waitlist sign-ups
+  app.post("/api/waitlist-signup", async (req: Request, res: Response) => {
+    try {
+      const signupData = req.body as WaitlistSignup;
+      
+      // Validate required fields
+      if (!signupData.name || !signupData.email || !signupData.program) {
+        return res.status(400).json({
+          status: "error",
+          message: "Missing required fields (name, email, or program)"
+        });
+      }
+      
+      console.log("Received waitlist signup:", JSON.stringify(signupData, null, 2));
+      
+      // Send notification to Jessica (direct to her email)
+      const notificationSent = await sendWaitlistNotification(signupData);
+      
+      if (notificationSent) {
+        res.json({ 
+          status: "success", 
+          message: "Waitlist registration successful" 
+        });
+      } else {
+        // If email fails, we still want to acknowledge the signup
+        res.status(200).json({
+          status: "partial",
+          message: "Waitlist registration received, but notification failed"
+        });
+      }
+    } catch (error) {
+      console.error("Error processing waitlist signup:", error);
+      res.status(500).json({
+        status: "error",
+        message: "Error processing waitlist signup"
       });
     }
   });
