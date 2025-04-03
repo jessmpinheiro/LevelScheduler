@@ -14,10 +14,9 @@ function useBasePath() {
   
   if (!isGitHubPages) return "";
   
-  // Extract repo name from path (for GitHub Pages)
-  const pathSegments = window.location.pathname.split('/');
-  if (pathSegments.length > 1) {
-    return `/${pathSegments[1]}`;
+  // For GitHub Pages, hardcode the repo name to ensure correct path
+  if (isGitHubPages) {
+    return "/LevelScheduler";
   }
   
   return "";

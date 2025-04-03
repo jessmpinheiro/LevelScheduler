@@ -3,73 +3,38 @@
 # Exit on error
 set -e
 
-# Build the application
-echo "📦 Building the application for GitHub Pages..."
+# Build the React application
+echo "📦 Building the application..."
 npm run build
 
-# Create a temporary gh-pages directory
+# Create gh-pages-new directory for GitHub Pages deployment
 echo "🔨 Setting up GitHub Pages deployment..."
 rm -rf gh-pages-new
 mkdir -p gh-pages-new
 
-# Copy the built files
+# Copy the built files to gh-pages-new directory
 echo "📋 Copying built files..."
 cp -r dist/public/* gh-pages-new/
 
-# Create a .nojekyll file
+# Copy the 404.html file which is crucial for SPA routing on GitHub Pages
+cp client/404.html gh-pages-new/
+
+# Create a .nojekyll file to bypass Jekyll processing
 touch gh-pages-new/.nojekyll
 
-# Fix the paths in index.html
-echo "🔧 Fixing asset paths in HTML files..."
-sed -i 's|src="/assets/|src="./assets/|g' gh-pages-new/index.html
-sed -i 's|href="/assets/|href="./assets/|g' gh-pages-new/index.html
+# Update the index.html file to correctly handle GitHub Pages paths
+sed -i 's|src="/|src="./|g' gh-pages-new/index.html
+sed -i 's|href="/|href="./|g' gh-pages-new/index.html
 
-# Add 404.html for SPA routing
-cat > gh-pages-new/404.html << 'EOF'
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Jessica's English Assessment</title>
-  <script type="text/javascript">
-    // Single Page Apps for GitHub Pages
-    // This way the code will only replace the route part of the path, and not
-    // the real directory in which the app resides, for example:
-    // https://jessmpinheiro.github.io/LevelScheduler/one/two?a=b&c=d#qwe, becomes
-    // https://jessmpinheiro.github.io/LevelScheduler/?/one/two&a=b~and~c=d#qwe
-    var pathSegmentsToKeep = 1;
+# Add a simple script to fix GitHub Pages asset loading
+sed -i 's|</head>|<script>window.GH_PATH_PREFIX="/LevelScheduler/";</script></head>|' gh-pages-new/index.html
 
-    var l = window.location;
-    l.replace(
-      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-      l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
-      l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
-      (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-      l.hash
-    );
-  </script>
-</head>
-<body>
-</body>
-</html>
-EOF
-
-# Deploy to GitHub
-echo "🚀 Pushing to GitHub Pages..."
-cd gh-pages-new
-git init
-git add .
-git config --local user.name "Replit User"
-git config --local user.email "replit@example.com"
-git commit -m "Deploy to GitHub Pages with fixed paths"
-
-# Use the GitHub token from environment variables
-GITHUB_TOKEN=$GITHUB_TOKEN
-REPO_URL="https://${GITHUB_TOKEN}@github.com/jessmpinheiro/LevelScheduler.git"
-git remote add origin $REPO_URL
-
-git push -f origin main:gh-pages
-
-echo "✅ Deployment completed!"
-echo "Please wait 1-2 minutes, then check your site at:"
-echo "https://jessmpinheiro.github.io/LevelScheduler/"
+echo ""
+echo "✅ GitHub Pages deployment files prepared in the 'gh-pages-new' directory!"
+echo ""
+echo "🚀 To deploy to GitHub Pages:"
+echo ""
+echo "1. Upload the contents of the 'gh-pages-new' directory to the gh-pages branch of your repository"
+echo "2. Make sure GitHub Pages is configured to use the 'gh-pages' branch in your repository settings"
+echo ""
+echo "Your site will be available at: https://jessmpinheiro.github.io/LevelScheduler/"
