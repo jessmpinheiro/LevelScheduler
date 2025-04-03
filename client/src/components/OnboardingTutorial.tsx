@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { driver } from 'driver.js';
+import { driver, DriveStep } from 'driver.js';
 import 'driver.js/dist/driver.css';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -8,14 +8,14 @@ import { X, ChevronRight, ChevronLeft, Info } from 'lucide-react';
 import { analytics } from '../lib/analytics';
 
 // Tutorial steps
-const tutorialSteps = [
+const tutorialSteps: DriveStep[] = [
   {
     element: '.logo-container',
     popover: {
       title: 'Bem-vindo(a) à Jessica English Assessment',
       description: 'Este é o serviço de avaliação de nível de inglês da Teacher Jessica.',
-      side: 'bottom',
-      align: 'start',
+      side: 'bottom' as const,
+      align: 'start' as const,
     }
   },
   {
@@ -23,8 +23,8 @@ const tutorialSteps = [
     popover: {
       title: 'Navegação Simples',
       description: 'Você pode alternar entre a avaliação de nível e o agendamento usando estas abas.',
-      side: 'bottom',
-      align: 'center',
+      side: 'bottom' as const,
+      align: 'center' as const,
     }
   },
   {
@@ -32,8 +32,8 @@ const tutorialSteps = [
     popover: {
       title: 'Avaliação de Nível',
       description: 'Faça uma avaliação aproximada do seu nível de inglês em apenas 10-15 minutos. Os resultados serão enviados para seu email.',
-      side: 'bottom',
-      align: 'start',
+      side: 'bottom' as const,
+      align: 'start' as const,
     }
   },
   {
@@ -41,8 +41,8 @@ const tutorialSteps = [
     popover: {
       title: 'Agende uma Consulta',
       description: 'Reserve uma consulta gratuita e sem compromisso para obter uma avaliação completa e precisa.',
-      side: 'bottom',
-      align: 'end',
+      side: 'bottom' as const,
+      align: 'end' as const,
     }
   },
   {
@@ -50,8 +50,8 @@ const tutorialSteps = [
     popover: {
       title: 'Depoimentos',
       description: 'Veja o que outros alunos dizem sobre os serviços da Teacher Jessica.',
-      side: 'top',
-      align: 'center',
+      side: 'top' as const,
+      align: 'center' as const,
     }
   },
   {
@@ -59,8 +59,8 @@ const tutorialSteps = [
     popover: {
       title: 'Entre em Contato',
       description: 'Você pode encontrar todas as informações de contato da Teacher Jessica aqui.',
-      side: 'top',
-      align: 'center',
+      side: 'top' as const,
+      align: 'center' as const,
     }
   }
 ];
