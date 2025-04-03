@@ -12,7 +12,7 @@ export default function TabNavigation({ activeTab, setActiveTab }: TabNavigation
   return (
     <>
       <div className="max-w-4xl mx-auto mb-8 px-4">
-        <div className="border-b border-gray-200 tabs-container">
+        <div className="border-b border-gray-200">
           <ul className="flex">
             <li className="mr-4">
               <a 
@@ -22,7 +22,7 @@ export default function TabNavigation({ activeTab, setActiveTab }: TabNavigation
                   setActiveTab("level-check");
                 }}
                 className={cn(
-                  "inline-block py-3 px-4 font-medium text-lg rounded-t-lg transition-all level-check-tab",
+                  "inline-block py-3 px-4 font-medium text-lg rounded-t-lg transition-all",
                   activeTab === "level-check" 
                     ? "text-gradient font-bold border-b-2 border-primary" 
                     : "text-gray-600 hover:text-primary"
@@ -39,7 +39,7 @@ export default function TabNavigation({ activeTab, setActiveTab }: TabNavigation
                   setActiveTab("schedule");
                 }}
                 className={cn(
-                  "inline-block py-3 px-4 font-medium text-lg rounded-t-lg transition-all schedule-tab",
+                  "inline-block py-3 px-4 font-medium text-lg rounded-t-lg transition-all",
                   activeTab === "schedule" 
                     ? "text-gradient font-bold border-b-2 border-primary" 
                     : "text-gray-600 hover:text-primary"

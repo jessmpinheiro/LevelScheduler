@@ -7,7 +7,7 @@ export default function Header() {
     <header className="bg-gradient-primary text-white shadow-md">
       <div className="container mx-auto px-4 py-6">
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0 flex items-center logo-container">
+          <div className="mb-4 md:mb-0 flex items-center">
             <div className="flex items-center">
               <h1 className="text-3xl font-bold text-white flex items-center">
                 English Assessment

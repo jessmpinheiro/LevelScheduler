@@ -20,9 +20,6 @@ cp client/404.html gh-pages/
 # Create a .nojekyll file to bypass Jekyll processing
 touch gh-pages/.nojekyll
 
-# Create env.js file with base path configuration for GitHub Pages
-echo "window.BASE_PATH = '/LevelScheduler/';" > gh-pages/env.js
-
 echo ""
 echo "✅ GitHub Pages deployment files prepared in the 'gh-pages' directory!"
 echo ""

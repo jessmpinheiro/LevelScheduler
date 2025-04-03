@@ -2,7 +2,7 @@ import { JessLogo } from "./icons/JessLogo";
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-primary text-white mt-20 contact-footer">
+    <footer className="bg-gradient-primary text-white mt-20">
       <div className="container mx-auto px-4 py-8">
         <div className="flex justify-center mb-6">
           <JessLogo className="w-20 h-10" />
