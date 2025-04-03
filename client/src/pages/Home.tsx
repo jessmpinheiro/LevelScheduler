@@ -5,7 +5,7 @@ import TabNavigation from "@/components/TabNavigation";
 import { useState } from "react";
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<"level-check" | "schedule">("level-check");
+  const [activeTab, setActiveTab] = useState<"level-check" | "schedule" | "tech-speaking-club">("level-check");
   
   return (
     <div className="bg-gray-50 min-h-screen flex flex-col">
