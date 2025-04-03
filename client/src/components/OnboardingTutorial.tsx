@@ -293,7 +293,7 @@ export default function OnboardingTutorial() {
       setShowWelcome(false);
       setShowTutorial(true);
       setCurrentStep(0);
-      driverObj.setActiveIndex(0);
+      // Usar o método correto para iniciar o tour
       driverObj.drive();
       
       analytics.trackEvent('Tutorial', 'Started');
@@ -334,8 +334,29 @@ export default function OnboardingTutorial() {
     if (driverObj && currentStep < tutorialSteps.length - 1) {
       const nextStep = currentStep + 1;
       setCurrentStep(nextStep);
-      driverObj.setActiveIndex(nextStep);
-      driverObj.drive();
+      
+      // Reiniciar o driver com os novos passos, pulando para o índice necessário
+      driverObj.destroy();
+      // @ts-ignore
+      const newDriverInstance = driver({
+        showProgress: false,
+        animate: true,
+        showButtons: ['close'],
+        steps: tutorialSteps.slice(nextStep),
+        onDeselected: () => {
+          if (showTutorial) {
+            endTutorial();
+          }
+        },
+        onDestroyed: () => {
+          if (showTutorial) {
+            endTutorial();
+          }
+        }
+      });
+      
+      setDriverObj(newDriverInstance);
+      newDriverInstance.drive();
       
       analytics.trackEvent('Tutorial', 'Step Viewed', 'Step', nextStep + 1);
     }
@@ -350,8 +371,29 @@ export default function OnboardingTutorial() {
     if (driverObj && currentStep > 0) {
       const prevStep = currentStep - 1;
       setCurrentStep(prevStep);
-      driverObj.setActiveIndex(prevStep);
-      driverObj.drive();
+      
+      // Reiniciar o driver com os novos passos, pulando para o índice necessário
+      driverObj.destroy();
+      // @ts-ignore
+      const newDriverInstance = driver({
+        showProgress: false,
+        animate: true,
+        showButtons: ['close'],
+        steps: tutorialSteps.slice(prevStep),
+        onDeselected: () => {
+          if (showTutorial) {
+            endTutorial();
+          }
+        },
+        onDestroyed: () => {
+          if (showTutorial) {
+            endTutorial();
+          }
+        }
+      });
+      
+      setDriverObj(newDriverInstance);
+      newDriverInstance.drive();
     }
   };
   
@@ -360,8 +402,29 @@ export default function OnboardingTutorial() {
     if (driverObj) {
       setShowTutorial(true);
       setCurrentStep(0);
-      driverObj.setActiveIndex(0);
-      driverObj.drive();
+      
+      // Reiniciar o driver com todos os passos desde o início
+      driverObj.destroy();
+      // @ts-ignore
+      const newDriverInstance = driver({
+        showProgress: false,
+        animate: true,
+        showButtons: ['close'],
+        steps: tutorialSteps,
+        onDeselected: () => {
+          if (showTutorial) {
+            endTutorial();
+          }
+        },
+        onDestroyed: () => {
+          if (showTutorial) {
+            endTutorial();
+          }
+        }
+      });
+      
+      setDriverObj(newDriverInstance);
+      newDriverInstance.drive();
       
       analytics.trackEvent('Tutorial', 'Restarted');
     }
