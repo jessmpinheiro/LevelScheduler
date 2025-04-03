@@ -5,11 +5,19 @@ import { Badge } from "@/components/ui/badge";
 import { Info, Lock, Clock } from "lucide-react";
 import { GraduationCapIcon } from "./icons/GraduationCapIcon";
 import { SparkleIcon } from "./icons/SparkleIcon";
+import { analytics } from "../lib/analytics";
 
 export default function LevelCheckTab() {
   // Google Form URL for the English level assessment
   const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSd2zhoScVWEc5jmffzHHLXbmblYqC-HXbaaL94SqqDZ_Q40Gw/viewform?embedded=true";
   const [progress, setProgress] = React.useState(0);
+  const [hasStarted, setHasStarted] = React.useState(false);
+  const progressThresholdForStart = 10; // Consideramos que começou após 10% de progresso
+
+  // Rastrear visualização da guia de verificação de nível
+  React.useEffect(() => {
+    analytics.trackLevelCheckView();
+  }, []);
 
   // Handle iframe load and message events
   React.useEffect(() => {
@@ -22,13 +30,24 @@ export default function LevelCheckTab() {
           const maxScroll = iframe.contentWindow?.document.body.scrollHeight || 0;
           const newProgress = Math.min(100, Math.round((scrollPos / maxScroll) * 100));
           setProgress(newProgress);
+          
+          // Rastrear quando o usuário inicia o formulário (após um certo progresso)
+          if (!hasStarted && newProgress >= progressThresholdForStart) {
+            analytics.trackLevelCheckStart();
+            setHasStarted(true);
+          }
+          
+          // Rastrear quando o usuário completa o formulário (100% de progresso)
+          if (newProgress === 100) {
+            analytics.trackLevelCheckSubmit();
+          }
         }
       }
     };
 
     window.addEventListener('message', handleMessage);
     return () => window.removeEventListener('message', handleMessage);
-  }, []);
+  }, [hasStarted]);
 
   return (
     <div>

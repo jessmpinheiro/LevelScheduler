@@ -2,8 +2,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, Mail } from "lucide-react";
 import { SparkleIcon } from "./icons/SparkleIcon";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CalendlySetupGuide from "./CalendlySetupGuide";
+import { analytics } from "../lib/analytics";
 
 export default function ScheduleTab() {
   // Calendar URL for scheduling meetings
@@ -11,6 +12,37 @@ export default function ScheduleTab() {
   
   // State to toggle setup guide visibility
   const [showSetupGuide, setShowSetupGuide] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
+  
+  // Rastrear visualização da guia de agendamento
+  useEffect(() => {
+    analytics.trackScheduleView();
+  }, []);
+  
+  // Configurar ouvinte para eventos do Calendly
+  useEffect(() => {
+    const handleCalendlyEvent = (e: MessageEvent) => {
+      // Verificar se a mensagem veio do Calendly
+      if (e.data.event && e.data.event.indexOf('calendly') === 0) {
+        // Eventos do Calendly seguem o formato: calendly.event_type
+        const eventName = e.data.event;
+        
+        // Rastrear quando alguém inicia o processo de agendamento
+        if (eventName === 'calendly.date_and_time_selected' && !hasInteracted) {
+          analytics.trackScheduleStart();
+          setHasInteracted(true);
+        }
+        
+        // Rastrear quando alguém completa um agendamento
+        if (eventName === 'calendly.event_scheduled') {
+          analytics.trackScheduleComplete();
+        }
+      }
+    };
+    
+    window.addEventListener('message', handleCalendlyEvent);
+    return () => window.removeEventListener('message', handleCalendlyEvent);
+  }, [hasInteracted]);
   
   return (
     <div>

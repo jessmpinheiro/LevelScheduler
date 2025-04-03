@@ -4,6 +4,8 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
+import { initializeAnalytics, trackPageView } from "./lib/analytics";
+import { useEffect } from "react";
 
 // GitHub Pages uses the repo name in the URL path
 // This helper function extracts the base path from the current URL
@@ -25,6 +27,13 @@ function useBasePath() {
 
 function Router() {
   const basePath = useBasePath();
+  const [location] = useLocation();
+  
+  // Rastrear mudanças de página para o Google Analytics
+  useEffect(() => {
+    // Enviar o evento de visualização de página para o GA
+    trackPageView(location);
+  }, [location]);
   
   return (
     <Switch>
@@ -37,6 +46,11 @@ function Router() {
 }
 
 function App() {
+  // Inicializar o Google Analytics quando o aplicativo carrega
+  useEffect(() => {
+    initializeAnalytics();
+  }, []);
+  
   return (
     <QueryClientProvider client={queryClient}>
       <Router />
