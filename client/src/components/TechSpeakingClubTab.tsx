@@ -149,7 +149,11 @@ export default function TechSpeakingClubTab() {
               <ul className="space-y-2 text-sm">
                 <li className="flex justify-between">
                   <span className="text-gray-600">Duration:</span>
-                  <span className="font-medium">8 weeks</span>
+                  <span className="font-medium">2 months</span>
+                </li>
+                <li className="flex justify-between">
+                  <span className="text-gray-600">Meeting days:</span>
+                  <span className="font-medium">Mondays & Wednesdays</span>
                 </li>
                 <li className="flex justify-between">
                   <span className="text-gray-600">Session length:</span>
@@ -165,11 +169,15 @@ export default function TechSpeakingClubTab() {
                 </li>
                 <li className="flex justify-between">
                   <span className="text-gray-600">Min. level:</span>
-                  <span className="font-medium">Intermediate (B1)</span>
+                  <span className="font-medium">Intermediate</span>
+                </li>
+                <li className="pt-2 border-t border-purple-100 mt-2">
+                  <span className="text-primary font-medium block mb-1">Investment:</span>
+                  <span className="font-semibold">R$360/month or R$700 paid in advance</span>
                 </li>
                 <li className="pt-2 border-t border-purple-100 mt-2">
                   <span className="text-primary font-medium block mb-1">Next club starts:</span>
-                  <span className="font-semibold">May 15, 2023</span>
+                  <span className="font-semibold">May 15, 2025</span>
                 </li>
               </ul>
             </div>
@@ -317,17 +325,22 @@ export default function TechSpeakingClubTab() {
             <div className="space-y-3">
               <div>
                 <h4 className="font-medium text-sm">How much does it cost?</h4>
-                <p className="text-sm text-gray-600">Pricing details will be shared once a spot is available. We offer competitive rates with special discounts for early registrations.</p>
+                <p className="text-sm text-gray-600">The Tech Speaking Club costs R$360 per month for 2 months, or R$700 if paid in advance for the full program (saving R$20).</p>
               </div>
               
               <div>
-                <h4 className="font-medium text-sm">What if my English level is lower than B1?</h4>
-                <p className="text-sm text-gray-600">We recommend taking individual classes to reach the B1 level before joining the club. You can schedule a consultation to discuss your options.</p>
+                <h4 className="font-medium text-sm">How often does the club meet?</h4>
+                <p className="text-sm text-gray-600">The club meets twice per week, on Mondays and Wednesdays, for 90-minute sessions.</p>
+              </div>
+              
+              <div>
+                <h4 className="font-medium text-sm">What if my English level is lower than Intermediate?</h4>
+                <p className="text-sm text-gray-600">We recommend taking individual classes to reach the Intermediate level before joining the club. You can schedule a consultation to discuss your options.</p>
               </div>
               
               <div>
                 <h4 className="font-medium text-sm">Can I join mid-program?</h4>
-                <p className="text-sm text-gray-600">Each club runs as a cohort for the full 8 weeks. New members join at the start of a new club cycle.</p>
+                <p className="text-sm text-gray-600">Each club runs as a cohort for the full 2 months. New members join at the start of a new club cycle.</p>
               </div>
             </div>
           </div>
