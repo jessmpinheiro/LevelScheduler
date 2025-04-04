@@ -343,7 +343,7 @@ export default function TechSpeakingClubTab() {
               
               <div>
                 <h4 className="font-medium text-sm">How often does the club meet?</h4>
-                <p className="text-sm text-gray-600">The club meets twice per week, on Mondays and Wednesdays, for 90-minute sessions.</p>
+                <p className="text-sm text-gray-600">The club meets twice per week, on Mondays and Wednesdays, for 60-minute sessions.</p>
               </div>
               
               <div>
